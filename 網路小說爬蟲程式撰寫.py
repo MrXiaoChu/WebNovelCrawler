@@ -21,7 +21,7 @@ book_dictionary = OrderedDict()
 full_list = list()
 chapter_list = list()
 key_list = list()
-loop_page = 3
+loop_page = 5
 
 for page in range(0,loop_page):
     for sub_page in range(0,loop_page):
@@ -74,7 +74,7 @@ for page in range(0,loop_page):
             continue
 with open('01.json', 'w', encoding='utf-8') as fp:
     json.dump(full_dictionary, fp, ensure_ascii = False, indent=4)
-pprint.pprint("已輸出JSON檔案.")
+print("\n\n已輸出JSON檔案.")
 
 
 # In[ ]:
