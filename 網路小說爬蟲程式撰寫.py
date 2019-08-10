@@ -13,10 +13,6 @@ import pprint
 import time
 import urllib
 
-
-# In[2]:
-
-
 #網頁的編碼是GBK(中國區域編碼)
 full_dictionary = OrderedDict()
 library_dictionary = OrderedDict()
@@ -25,9 +21,10 @@ book_dictionary = OrderedDict()
 full_list = list()
 chapter_list = list()
 key_list = list()
+loop_page = 3
 
-for page in range(0,50):
-    for sub_page in range(0,50):
+for page in range(0,loop_page):
+    for sub_page in range(0,loop_page):
         library_dictionary = OrderedDict()
         novel_URL = "https://www.wenku8.net/novel/" +  str(page) + "/" + str(sub_page) + "/index.htm"
         try:
@@ -75,19 +72,9 @@ for page in range(0,50):
             print("暫停1秒鐘")
             time.sleep(1)
             continue
-
-
-# In[3]:
-
-
-pprint.pprint(full_dictionary)
-
-
-# In[4]:
-
-
 with open('01.json', 'w', encoding='utf-8') as fp:
     json.dump(full_dictionary, fp, ensure_ascii = False, indent=4)
+pprint.pprint("已輸出JSON檔案.")
 
 
 # In[ ]:
