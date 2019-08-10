@@ -64,7 +64,17 @@ for page in range(0,loop_page):
             book_dictionary = OrderedDict()
             pprint.pprint(library_dictionary)
             full_list.append(library_dictionary)
-            full_dictionary["書庫"] = full_list
+            full_dictionary[str(soup.find(id = "title").get_text()) + "的書目詳細資料"] = full_list
+            with open(str(soup.find(id = "title").get_text()) + ".json", "w", encoding="utf-8") as fp:
+                json.dump(full_dictionary, fp, ensure_ascii = False, indent=4)
+            print("{0}的JSON檔案已輸出".format(str(soup.find(id = "title").get_text())))
+            full_dictionary = OrderedDict()
+            library_dictionary = OrderedDict()
+            author_dictionary =  OrderedDict()
+            book_dictionary = OrderedDict()
+            full_list = list()
+            chapter_list = list()
+            key_list = list()
             print("暫停1秒鐘")
             time.sleep(1)
         except HTTPError:
@@ -72,9 +82,17 @@ for page in range(0,loop_page):
             print("暫停1秒鐘")
             time.sleep(1)
             continue
-with open('01.json', 'w', encoding='utf-8') as fp:
-    json.dump(full_dictionary, fp, ensure_ascii = False, indent=4)
-print("\n\n已輸出JSON檔案.")
+            
+            
+
+
+    
+
+
+# In[2]:
+
+
+full_dictionary
 
 
 # In[ ]:
